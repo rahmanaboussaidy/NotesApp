@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:notesapp/models/note_model.dart';
 
 class NotesNotifier extends ChangeNotifier {
-  List<NoteModel> _note = [];
+  final List<NoteModel> _note = [];
 
   List<NoteModel> get note => _note;
 
@@ -21,14 +21,11 @@ class NotesNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateNote(NoteModel note) {
-    _note.add(note);
-    notifyListeners();
-  }
-
-  
-  void editNote(NoteModel note) {
-    _note.add(note);
-    notifyListeners();
+  void updateNote(NoteModel updatedNote) {
+    final index = _note.indexWhere((note) => note.id == updatedNote.id);
+    if (index != -1) {
+      _note[index] = updatedNote;
+      notifyListeners();
+    }
   }
 }

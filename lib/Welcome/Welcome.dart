@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:notesapp/home/Home.dart';
-import 'package:notesapp/models/note_model.dart';
 
 class Welcome extends StatelessWidget {
   const Welcome({super.key});
@@ -26,11 +25,7 @@ class Welcome extends StatelessWidget {
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => NotesHome(
-
-                    ),
-                  ),
+                  MaterialPageRoute(builder: (context) => NotesHome()),
                 );
               },
               child: Text("Continue"),

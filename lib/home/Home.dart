@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notesapp/AddNotes/addNotes.dart';
-import 'package:notesapp/models/note_model.dart';
+import 'package:notesapp/EditNotes/editnotes.dart';
 import 'package:notesapp/states/notes_notifier.dart';
 import 'package:provider/provider.dart';
 
@@ -12,7 +12,6 @@ class NotesHome extends StatefulWidget {
 }
 
 class _NotesHomeState extends State<NotesHome> {
-  
   @override
   Widget build(BuildContext context) {
     var notes = context.watch<NotesNotifier>().note;
@@ -26,6 +25,12 @@ class _NotesHomeState extends State<NotesHome> {
             leading: Icon(Icons.article),
             title: Text(notes[index].title),
             subtitle: Text(notes[index].subtitles),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Editnotes(note: notes[index])),
+              );
+            },
           );
         },
       ),

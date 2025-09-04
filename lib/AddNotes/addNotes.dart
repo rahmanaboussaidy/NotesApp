@@ -3,6 +3,7 @@ import 'package:notesapp/home/Home.dart';
 import 'package:notesapp/models/note_model.dart';
 import 'package:notesapp/states/notes_notifier.dart';
 import 'package:provider/provider.dart';
+import 'package:uuid/uuid.dart' as unique;
 
 class AddNotesScreen extends StatefulWidget {
   const AddNotesScreen({super.key});
@@ -48,6 +49,7 @@ class _AddNotesScreenState extends State<AddNotesScreen> {
           var mynote = NoteModel(
             title: headingcontroller.value.text,
             subtitles: bodycontroller.value.text,
+            id: unique.Uuid().v4(),
           );
 
           context.read<NotesNotifier>().addNote(mynote);
